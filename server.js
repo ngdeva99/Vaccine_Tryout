@@ -34,7 +34,7 @@ client.connect()
     {
         method: 'POST',
         path: '/register',
-        handler: async (request, h) => {     // JOI validation
+        handler: async (request, h) => {
             var mobileno = request.payload.mobile;
             var fname = request.payload.fname;
             var lname = request.payload.lname;
@@ -53,7 +53,6 @@ client.connect()
         method: 'POST',
         path : '/v1dose',
         handler : async (request, h) => {
-            //this flow has to accept mobile no as the input
             var mobile = request.payload.mobile;
             const respo = await bs.v1Vaccine(mobile);
             const data = { response: respo }
@@ -70,7 +69,6 @@ client.connect()
         method: 'POST',
         path : '/v2dose',
         handler : async (request, h) => {
-            //this flow has to accept mobile no as the input
             var mobile = request.payload.mobile;
             const respo = await bs.v2Vaccine(mobile);
             const data = { response: respo }
