@@ -1,6 +1,4 @@
 
-
-// Endpoint to fetch the unreserved seats with screen_id
 const isRegisteredUser = 'SELECT count(*) FROM "reg_patients" WHERE reg_patients.mobile = $1';
 
 const assignV1 = 'INSERT into "reg_patients" (firstname,lastname,mobile,v1state,v2state,reg_date) values ($1,$2,$3,$4,$5,$6)';
