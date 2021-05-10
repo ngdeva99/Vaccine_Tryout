@@ -28,7 +28,15 @@ const getV1BStocks = async () => {
     }
     catch (err){return err;}
 }
+const getV2BStocks = async () => {
+    try 
+    {  
+            const result = await client.query(queries.getV2BStocks);
+            return result.rows[0].v2_buffer;
 
+    }
+    catch (err){return err;}
+}
 const v1ToActive = async (mobileno) => {
     try 
     {  
@@ -41,6 +49,13 @@ const reduceV1BStocks = async (available_v1_stocks) => {
     try 
     {  
             const result = await client.query(queries.reduceV1BStocks,[available_v1_stocks-1]);
+    }
+    catch (err){return err;}
+}
+const reduceV2BStocks = async (available_v2_stocks) => {
+    try 
+    {  
+            const result = await client.query(queries.reduceV2BStocks,[available_v2_stocks-1]);
     }
     catch (err){return err;}
 }
@@ -158,6 +173,45 @@ const addV2Stocks = async (new_stocks) => {
     }
 }
 
+const pplforPendingtoActive = async () => {
+    try{
+        const result = await client.query(queries.pplforPendingtoActive);
+        return result;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+const pplforIneligibleToPending = async () => {
+    try{
+        const result = await client.query(queries.pplforIneligibleToPending);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+
+const v2ToActive = async (this_patient_mobile) => {
+    try{
+        const result = await client.query(queries.v2ToActive,['ACTIVE',`${this_patient_mobile}`]);
+    }
+    catch (err){
+        console.log(err);
+    }
+}
+
+const v2ToPending = async (this_patient_mobile) => {
+    try{
+        const result = await client.query(queries.v2ToActive,['INELIGIBLE',`${this_patient_mobile}`]);
+    }
+    catch (err){
+        console.log(err);
+    }
+}
+
+
 module.exports = {
     isRegisteredUser : isRegisteredUser,
     assignV1 : assignV1,
@@ -175,5 +229,11 @@ module.exports = {
     v2done        : v2done,
     v2date        : v2date,
     getV2Stocks        : getV2Stocks,
-    reduceV2Stocks        : reduceV2Stocks
+    reduceV2Stocks        : reduceV2Stocks,
+    pplforPendingtoActive : pplforPendingtoActive,
+    getV2BStocks : getV2BStocks,
+    reduceV2BStocks : reduceV2BStocks,
+    pplforIneligibleToPending : pplforIneligibleToPending,
+    v2ToActive : v2ToActive,
+    v2ToPending : v2ToPending
 }
