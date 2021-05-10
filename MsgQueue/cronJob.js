@@ -34,7 +34,7 @@ cron.schedule('* * * * * *', () => {
             let patient_details = msg.content.toString();
             patient_details = JSON.parse(patient_details);
             console.log(":",patient_details);
-            //channel.ack(msg); // -- this will be the notification service
+            channel.ack(msg); // -- this will be the notification service
 
         });
         
@@ -42,7 +42,7 @@ cron.schedule('* * * * * *', () => {
             let patient_details = msg2.content.toString();
             patient_details = JSON.parse(patient_details);
             console.log(":",patient_details);
-            //channel.ack(msg2); //-- this will be the notification service
+            channel.ack(msg2); //-- this will be the notification service
             });
 
         });

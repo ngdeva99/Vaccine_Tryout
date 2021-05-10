@@ -10,10 +10,10 @@ const sendToQueue = function(mobileno){
             if (error1) {
                 throw error1;
             }
-            let queue = 'v1eligible'; /// TODO :: enum type -- DOUBT ::
+            let queue = 'v1eligible';
             let msg = `{"title":"V1 notification","patient":${mobileno}}`;
 
-            channel.assertQueue(queue, { // TODO :: create queue in a seperate .sh file __ DOUBT ::
+            channel.assertQueue(queue, {
                 durable: false
             });
 
