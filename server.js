@@ -40,7 +40,7 @@ client.connect()
             var lname = request.payload.lname;
             const respo = await bs.register_patient(mobileno,fname,lname);
             const data = { response: respo }
-            return h.response(data).code(200)
+            return h.response(data).code(409)
             },
             config: {
             validate: {
