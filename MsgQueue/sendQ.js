@@ -13,10 +13,6 @@ const sendToQueue = function(mobileno){
             let queue = 'v1eligible';
             let msg = `{"title":"V1 notification","patient":${mobileno}}`;
 
-            channel.assertQueue(queue, {
-                durable: false
-            });
-
             channel.sendToQueue(queue, Buffer.from(msg));
             console.log(" [x] Sent %s", msg);
             });
@@ -34,10 +30,6 @@ const sendToQueue1 = function(mobileno){
             }
             let queue = 'v2eligible';
             let msg2 = `{"title":"V2 notification","patient":${mobileno}}`;
-
-            channel.assertQueue(queue, {
-                durable: false
-            });
 
             channel.sendToQueue(queue, Buffer.from(msg2));
             console.log(" [x] Sent %s", msg2);
