@@ -49,7 +49,7 @@ const v1date ='UPDATE "reg_patients" SET "v1done" = $1 where reg_patients.mobile
 
 const v2date ='UPDATE "reg_patients" SET "v2done" = $1 where reg_patients.mobile = $2';
 
-const day30window = `select * from "reg_patients" where date_part('day',age(current_date,v1done)) >= 0 and "v1state" = 'DONE' and "v2state" = 'INELIGIBLE' order by "reg_date"`;
+const day30window = `select * from "reg_patients" where date_part('day',age(current_date,v1done)) >= 30 and "v1state" = 'DONE' and "v2state" = 'INELIGIBLE' order by "reg_date"`;
 
 const v1pendingToActive = 'update "reg_patients" SET "v1state" = $2 where v1state = $1';
 
